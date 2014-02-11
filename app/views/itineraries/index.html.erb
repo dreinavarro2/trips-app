@@ -8,10 +8,10 @@
 
 <table class="table">
   <tr>
-    <th>Location</th>
-    <th>Travel Date</th>
-    <th>Estimated Cost</th>
-    <th>Actions</th>
+    <th><%= sortable 'location' %></th>
+    <th><%= sortable 'travel_on', 'Travel Date' %></th>
+    <th><%= sortable 'estimated_cost' %></th>
+    <th></th>
   </tr>
 <% @itineraries.each do |itinerary| %>
   <tr style="<%= itinerary_row_style(itinerary) %>">

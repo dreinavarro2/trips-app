@@ -6,6 +6,7 @@ class ItinerariesController < ApplicationController
 
 	def index
 		@itineraries = Itinerary.all
+		@remaining_budget = Itinerary.remaining_budget
 	end
 
 	def new
@@ -36,9 +37,16 @@ class ItinerariesController < ApplicationController
     	end
 	end
 
+	def destroy
+		@itinerary = Itinerary.find(params[:id])
+		flash[:notice] = "You have successfully deleted the itinerary for #{@itinerary.location}"
+		@itinerary.destroy
+		redirect_to action: 'index'
+	end
+
 	private
 	def itinerary_params
-		params.require(:itinerary).permit(:location, :travel_on)
+		params.require(:itinerary).permit(:location, :travel_on, :estimated_cost)
 	end
 
 end

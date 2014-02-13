@@ -47,7 +47,7 @@ class ItinerariesController < ApplicationController
 
 	private
 	def itinerary_params
-		params.require(:itinerary).permit(:location, :travel_on, :estimated_cost)
+		params.require(:itinerary).permit(:location, :travel_on, :estimated_cost, :trip_id)
 	end
 
 	def sort_column

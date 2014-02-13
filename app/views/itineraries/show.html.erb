@@ -3,6 +3,7 @@
 <ul>
   <li>Location: <%= @itinerary.location %></li>
   <li>Travel Date: <%= @itinerary.travel_on %></li>
+  <li>Trip: <%= @itinerary.trip.name %></li>
 </ul>
 
 <%= form_for(@itinerary, method: :delete, html: { role: 'form' }) do |f| %>

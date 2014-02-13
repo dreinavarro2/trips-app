@@ -1,5 +1,6 @@
 class Itinerary < ActiveRecord::Base
-	validates :location, presence: true
+	belongs_to :trip
+  validates :location, presence: true
 
 	class << self
 		def monthly_budget

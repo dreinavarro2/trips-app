@@ -3,7 +3,7 @@
     <li><%= full_message %></li>
   <% end %>
 </ul>
-<%= form_for(@itinerary, html: { role: 'form' }) do |f| %>
+<%= form_for([@trip, @itinerary], html: { role: 'form' }) do |f| %>
   <div class="form-group">
     <%= f.label :trip_id, class: 'control-label' %>
     <%= f.collection_select :trip_id, Trip.ordered_by_name, :id, :name, class: 'form-control' %>

@@ -6,15 +6,18 @@ class ItinerariesController < ApplicationController
 	end
 
 	def index
-		@itineraries = Itinerary.order([sort_column, sort_direction].join(" "))
+		@trip = Trip.find(params[:trip_id])
+		@itineraries = @trip.itineraries.order(sort_column + " " + sort_direction)
 		@remaining_budget = Itinerary.remaining_budget
 	end
 
 	def new
-		@itinerary = Itinerary.new
+		@trip = Trip.find(params[:trip_id])
+		@itinerary = Itinerary.new(trip: @trip)
 	end
 
 	def create
+		@trip = Trip.find(params[:trip_id])
 		@itinerary = Itinerary.new(itinerary_params)
 		@itinerary.save
 		
@@ -26,10 +29,12 @@ class ItinerariesController < ApplicationController
 	end
 
 	def edit
+		@trip = Trip.find(params[:trip_id])
 		@itinerary = Itinerary.find(params[:id])
 	end
 
 	def update
+		@trip = Trip.find(params[:trip_id])
 		@itinerary = Itinerary.find(params[:id])
 		if @itinerary.update(itinerary_params)
       		redirect_to action: 'show', id: @itinerary.id

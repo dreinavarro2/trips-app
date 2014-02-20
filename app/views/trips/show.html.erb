@@ -2,6 +2,7 @@
 
 <ul>
   <li>Name: <%= @trip.name %></li>
+  <li><%= link_to 'View Itineraries', trip_itineraries_path(@trip), class: 'btn btn-primary' %></li>
 </ul>
 
 <%= form_for(@trip, method: :delete, html: { role: 'form' }) do |f| %>

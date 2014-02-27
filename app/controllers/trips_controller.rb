@@ -1,5 +1,8 @@
 class TripsController < ApplicationController
 	helper_method :sort_column, :sort_direction
+	
+	before_action :find_trip, except: [:index, :new, :create]
+	before_action :list_budget, only: [:index]
 
 	#crud actions
 	def show
@@ -57,6 +60,16 @@ class TripsController < ApplicationController
 	def sort_direction
 		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
 	end
+
+	def find_trip
+   		id = params[:trip_id] ? params[:trip_id] : params[:id]
+   		@trip = Trip.find(id)
+ 	end
+
+ 	def list_budget
+   		@budgets = Budget.order('date_from desc')
+  		@budget = Budget.new
+ 	end
 
 
 end

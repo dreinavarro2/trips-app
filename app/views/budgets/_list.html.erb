@@ -1,0 +1,9 @@
+<div class="budget">
+  <h1><a href="#" class="title">Set your budget</a></h1>
+  <div class="budgets">
+    <%= render partial: 'budgets/form', locals: { budget: @budget, name: "Create" } %>
+    <% @budgets.each do |budget| %>
+      <%= render partial: 'budgets/form', locals: { budget: budget, name: 'Update' } %>
+    <% end %>
+  </div>
+</div>

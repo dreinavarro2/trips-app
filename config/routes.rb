@@ -5,4 +5,6 @@ resources :trips do
 	resources :itineraries
 end
 
+root :to => 'trips#index'
+
 end
